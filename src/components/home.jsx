@@ -25,8 +25,3 @@ const Home = () => {
 }
  
 export default Home;
-<div className="container">
-    <div className="col-md-12">
-        <h1>Welcom to Game Review</h1>
-    </div>
-</div>
