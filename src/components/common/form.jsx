@@ -4,34 +4,36 @@ import Joi from "joi-browser";
 
 class Form extends Component {
   validateForm = () => {
-    const { error } = Joi.validate(this.state.user, this.schema, {
-      abortEarly: false,
+    const {error} = Joi.validate(this.state.user, this.schema, {
+      abortEarly: false
     });
-    console.log(error);
     if (!error) return null;
 
     const errors = {};
     for (let item of error.details) {
       errors[item.path[0]] = item.message;
     }
-    // console.log(this.state.errors);
     return errors;
   };
+
 
   handleChange = ({ currentTarget: input }) => {
     const user = { ...this.state.user };
     user[input.name] = input.value;
-    this.setState({ user });
+    this.setState({ user});
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const errors = this.validateForm();
+    console.log(errors);
     this.setState({ errors: errors || {} });
     if (errors) return;
 
     this.doSubmit();
   };
+
+
 
   renderButton(label) {
     return <button className="btn btn-outline-primary">{label}</button>;
@@ -44,6 +46,7 @@ class Form extends Component {
         placeholder={placeholder}
         type={type}
         onChange={this.handleChange}
+        errors={this.state.errors[name]}
       />
     );
   }

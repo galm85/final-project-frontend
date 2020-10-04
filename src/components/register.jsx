@@ -24,7 +24,7 @@ class Register extends Form {
   doSubmit() {
     console.log("submited");
 
-    // userService.registerNewUser(this.state.user);
+    userService.registerNewUser(this.state.user);
   }
 
   render() {
