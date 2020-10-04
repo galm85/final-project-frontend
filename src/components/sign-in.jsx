@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './common/form';
 import Joi from 'joi-browser';
+import userService from '../services/userService';
 
 class Signin extends Form  {
     state = { 
@@ -16,9 +17,24 @@ class Signin extends Form  {
                 password: Joi.string().required().min(6).max(255).label("Password"),
      }
 
-    doSubmit(){
-        console.log("submit")
-    }
+    async doSubmit(){
+        const {user} = this.state;
+        
+        try{
+         await userService.signIn(user)
+                alert("welcome Back");  
+                window.location = "/";  
+        }
+        catch(error){
+            alert("try again");
+            this.setState({user:{email:"",password:""}})
+            window.location = "/sign-in";  
+            
+        }}
+       
+
+
+    
 
 
     render() { 
