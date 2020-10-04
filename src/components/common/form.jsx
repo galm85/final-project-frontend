@@ -4,7 +4,7 @@ import Joi from "joi-browser";
 
 class Form extends Component {
   validateForm = () => {
-    const {error} = Joi.validate(this.state.user, this.schema, {
+    const {error} = Joi.validate(this.state.data, this.schema, {
       abortEarly: false
     });
     if (!error) return null;
@@ -18,15 +18,14 @@ class Form extends Component {
 
 
   handleChange = ({ currentTarget: input }) => {
-    const user = { ...this.state.user };
-    user[input.name] = input.value;
-    this.setState({ user});
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+    this.setState({ data});
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const errors = this.validateForm();
-    console.log(errors);
     this.setState({ errors: errors || {} });
     if (errors) return;
 

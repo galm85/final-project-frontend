@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import Review from './common/review';  
 import reviewsService from '../services/reviewsService.js'
-
+import {Link} from 'react-router-dom';
 
 class Reviews extends Component {
     state = { 
@@ -11,6 +11,12 @@ class Reviews extends Component {
      
      async componentDidMount(){  
       const allReviews = await reviewsService.getAllReviews();
+      allReviews.data=allReviews.data.sort((a,b)=>{
+          if(a.createdAt > b.createdAt) return -1;
+          if(a.createdAt < b.createdAt) return 1;
+           return 0;
+
+      })
       this.setState({reviews:allReviews.data});
      
      }
@@ -22,6 +28,7 @@ class Reviews extends Component {
 
     render(){ 
         const{reviews} = this.state;
+
   
         return ( 
             <div className="container">
@@ -30,12 +37,15 @@ class Reviews extends Component {
                          <h1>Reviews</h1>
                     </div>
                 </div>
+                <div className="row mt-5">
+                     <Link className="btn btn-outline-primary" to='/new-review'>Add New Review</Link>
+                </div>
 
-                <div className="row">
+                <div className="row mt-5">
                     <div className="col-12-md d-flex flex-column flex-wrap">
                         {reviews.length>0&&reviews.map((item,index)=>(
                             
-                            <Review key={index} title={item.title} img={item.img}  body={item.body} comments={item.comments}/>
+                            <Review key={index} date={item.createdAt} title={item.title} img={item.img}  body={item.body} comments={item.comments}/>
                         ))}
                     
                     </div>

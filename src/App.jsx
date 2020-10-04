@@ -9,6 +9,7 @@ import Register from './components/register';
 import Home  from "./components/home";
 import Reviews from './components/reviews';
 import Signin from './components/sign-in';
+import NewReview from './components/new-review';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route  path="/register" component={Register} />
           <Route  path="/reviews" component={Reviews} />
           <Route  path="/sign-in" component={Signin} />
+          <Route  path="/new-review" component={NewReview} />
 
         </Switch>
 

@@ -5,7 +5,7 @@ import userService from '../services/userService';
 
 class Signin extends Form  {
     state = { 
-        user:{
+        data:{
             email:"",
             password:""
         },
@@ -18,16 +18,16 @@ class Signin extends Form  {
      }
 
     async doSubmit(){
-        const {user} = this.state;
+        const {data} = this.state;
         
         try{
-         await userService.signIn(user)
+         await userService.signIn(data)
                 alert("welcome Back");  
                 window.location = "/";  
         }
         catch(error){
             alert("try again");
-            this.setState({user:{email:"",password:""}})
+            this.setState({data:{email:"",password:""}})
             window.location = "/sign-in";  
             
         }}
