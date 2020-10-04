@@ -17,7 +17,7 @@ class NavBar extends Component {
                              <NavLink className="nav-link" to="">About <span className="sr-only">(current)</span></NavLink>
                         </li>
                         <li className="nav-item">
-                             <NavLink className="nav-link" to="">Games</NavLink>
+                             <NavLink className="nav-link" to="/reviews">Reviews</NavLink>
                         </li>
                     </ul>
 

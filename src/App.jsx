@@ -7,7 +7,7 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 import Register from './components/register';
 import Home  from "./components/home";
-
+import Reviews from './components/reviews';
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route  path="/register" component={Register} />
+          <Route  path="/reviews" component={Reviews} />
 
         </Switch>
 
