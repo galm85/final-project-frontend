@@ -1,17 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Review = ({title,img,body,comments}) => { 
+const Review = ({title,img,body,comments,id}) => { 
     return ( 
         <div className="card" >
             <img src={img} className="card-img-top width:50%" alt={title}></img>
             <div className="card-body">
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text mb-5">{body}</p>
-                    {comments.map((comment,index)=>(
-                        <p key={index}>{comment}</p>
+                    {comments && comments.map((comment,index)=>(
+                        <p key={index}>{comment.title}</p>
                     ))}
-                    <Link to="" className="btn btn-primary">Add new comment</Link>
+                   
+                    <Link to="" id={id}  className="btn btn-primary">Add new comment</Link>
 
             </div>
         </div>    

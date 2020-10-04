@@ -1,19 +1,28 @@
 import React, { Component } from 'react'; 
 import Review from './common/review';  
+import reviewsService from '../services/reviewsService.js'
+
 
 class Reviews extends Component {
     state = { 
-        reviews:[
-            {
-                title:"demo title",
-                body:"demo body",
-                img:"https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Assassin%27s_Creed.jpg/220px-Assassin%27s_Creed.jpg",
-                comments:["sadas","dsadsad","frewfe"]
-            }
-        ]
+        reviews:[]
      }
-    render() { 
-        const {reviews} = this.state;
+
+     
+     async componentDidMount(){  
+      const allReviews = await reviewsService.getAllReviews();
+      this.setState({reviews:allReviews.data});
+     
+     }
+
+     
+     
+
+     
+
+    render(){ 
+        const{reviews} = this.state;
+  
         return ( 
             <div className="container">
                 <div className="row text-center">
@@ -24,8 +33,9 @@ class Reviews extends Component {
 
                 <div className="row">
                     <div className="col-12-md d-flex flex-column flex-wrap">
-                        {reviews.map((review,index) =>(
-                           <Review key={index} title={review.title} img={review.img} body={review.body} comments={review.comments}/> 
+                        {reviews.length>0&&reviews.map((item,index)=>(
+                            
+                            <Review key={index} title={item.title} img={item.img}  body={item.body} comments={item.comments}/>
                         ))}
                     
                     </div>
