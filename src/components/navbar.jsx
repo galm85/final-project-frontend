@@ -24,7 +24,7 @@ class NavBar extends Component {
 
                     <ul className="navbar-nav ml-auto">
                          <li className="nav-item active">
-                             <NavLink className="nav-link" to="">Sign In <span className="sr-only">(current)</span></NavLink>
+                             <NavLink className="nav-link" to="/sign-in">Sign In <span className="sr-only">(current)</span></NavLink>
                         </li>
                         <li className="nav-item">
                              <NavLink className="nav-link" to="/register">Register</NavLink>
