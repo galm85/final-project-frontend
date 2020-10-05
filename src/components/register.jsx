@@ -23,8 +23,8 @@ class Register extends Form {
 
   doSubmit() {
     console.log("submited");
-
     userService.registerNewUser(this.state.data);
+    this.props.history.replace("/sign-in");
   }
 
   render() {
