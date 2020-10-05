@@ -1,0 +1,13 @@
+.my-review{
+    border-bottom:blue solid 2px;
+    height: auto;
+    min-height: 500px;
+    margin-top: 30px;
+}
+
+.my-review img{
+    object-fit: cover;
+    max-height: 100%;
+    max-width: 100%;
+
+}

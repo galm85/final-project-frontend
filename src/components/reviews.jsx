@@ -37,7 +37,7 @@ class Reviews extends Component {
                 </div>
 
                 <div className="row mt-5">
-                    <div className="col-12-md d-flex flex-column flex-wrap">
+                    <div className="col-12-md d-flex  flex-wrap">
                         {reviews.length>0&&reviews.map((item,index)=>(
                             
                             <Review key={index} _id={item._id} date={item.createdAt} title={item.title} img={item.img}  body={item.body} comments={item.comments}/>
