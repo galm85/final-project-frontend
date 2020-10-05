@@ -11,6 +11,7 @@ class Reviews extends Component {
      
      async componentDidMount(){  
       const allReviews = await reviewsService.getAllReviews();
+      
       allReviews.data=allReviews.data.sort((a,b)=>{
           if(a.createdAt > b.createdAt) return -1;
           if(a.createdAt < b.createdAt) return 1;
@@ -21,15 +22,9 @@ class Reviews extends Component {
      
      }
 
-     
-     
-
-     
 
     render(){ 
         const{reviews} = this.state;
-
-  
         return ( 
             <div className="container">
                 <div className="row text-center">
@@ -45,7 +40,8 @@ class Reviews extends Component {
                     <div className="col-12-md d-flex flex-column flex-wrap">
                         {reviews.length>0&&reviews.map((item,index)=>(
                             
-                            <Review key={index} date={item.createdAt} title={item.title} img={item.img}  body={item.body} comments={item.comments}/>
+                            <Review key={index} _id={item._id} date={item.createdAt} title={item.title} img={item.img}  body={item.body} comments={item.comments}/>
+                            
                         ))}
                     
                     </div>

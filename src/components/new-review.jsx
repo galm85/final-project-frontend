@@ -6,16 +6,13 @@ import reviewsService from '../services/reviewsService.js'
 
 class NewReview extends Form {
     state = { 
-        data:[
-
-            
-
-        ],
+        data:[],
         errors:[]
      }
 
 
     schema = {
+        _id:Joi.string(),
         title:Joi.string().required(),
         body:Joi.string().required(),
         img:Joi.string(),
@@ -26,17 +23,12 @@ class NewReview extends Form {
     data.userId = "2222"
     try{
         await reviewsService.postNewReview(data);
-        console.log("good")
-        return;
+        
     }
     catch(error){
         console.log(error)
-        return;
+        
     }
-
-
-        
-        
     }
 
 

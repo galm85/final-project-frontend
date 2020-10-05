@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Review = ({ title, img, body, comments, id, date }) => {
+const Review = ({ title, img, body, comments, _id, date }) => {
   return (
     <div className="card">
       <img src={img} className="card-img-top width:50%" alt={title}></img>
@@ -15,7 +15,7 @@ const Review = ({ title, img, body, comments, id, date }) => {
         {comments &&
           comments.map((comment, index) => <p key={index}>{comment.title}</p>)}
 
-        <Link to="/new-comment" id={id} className="btn btn-primary">
+        <Link to={`/new-comment/${_id}`} className="btn btn-primary">
           Add new comment
         </Link>
       </div>

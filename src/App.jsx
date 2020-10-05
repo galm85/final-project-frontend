@@ -26,7 +26,7 @@ function App() {
           <Route path="/reviews" component={Reviews} />
           <Route path="/sign-in" component={Signin} />
           <Route path="/new-review" component={NewReview} />
-          <Route path="/new-comment" component={NewComment} />
+          <Route path="/new-comment/:id" component={NewComment} />
         </Switch>
       </main>
 
