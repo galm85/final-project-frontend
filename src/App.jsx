@@ -1,6 +1,7 @@
-import React from "react";
+import React,{Component} from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
+import userService from './services/userService.js';
 
 //components
 import Navbar from "./components/navbar";
@@ -11,12 +12,26 @@ import Reviews from "./components/reviews";
 import Signin from "./components/sign-in";
 import NewReview from "./components/new-review";
 import NewComment from "./components/new-comment";
+import Signout from "./components/sign-out";
 
-function App() {
-  return (
-    <div className="d-flex flex-column min-vh-100 ">
+class App extends Component {
+  
+  state = {
+    user:{}
+    }
+
+  componentDidMount(){
+    const user = userService.getUser()
+    this.setState({user});    
+
+  }
+  
+  
+  render() { 
+    return ( 
+      <div className="d-flex flex-column min-vh-100 ">
       <header>
-        <Navbar />
+        <Navbar  user={this.state.user}/>
       </header>
 
       <main className="flex-fill">
@@ -25,6 +40,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/reviews" component={Reviews} />
           <Route path="/sign-in" component={Signin} />
+          <Route path="/sign-out" component={Signout} />
           <Route path="/new-review" component={NewReview} />
           <Route path="/new-comment/:id" component={NewComment} />
         </Switch>
@@ -34,7 +50,13 @@ function App() {
         <Footer />
       </footer>
     </div>
-  );
+     );
+  }
 }
-
+ 
 export default App;
+
+
+
+
+
