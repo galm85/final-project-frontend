@@ -2,6 +2,9 @@ import httpService from './httpService'
 import jwtDecode from "jwt-decode";
 import {apiUrl} from '../config.json'
 
+export function getToken(){
+    return localStorage.getItem("Token");
+}
 
 export async function registerNewUser(user){
  return await httpService.post(`${apiUrl}users/`,user);
@@ -31,5 +34,6 @@ export default {
     registerNewUser,
     signIn,
     getUser,
-    signOut
+    signOut,
+    getToken
 }

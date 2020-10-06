@@ -1,18 +1,22 @@
 import React,{Component} from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import userService from './services/userService.js';
+
+
 
 //components
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-import Register from "./components/register";
 import Home from "./components/home";
-import Reviews from "./components/reviews";
+import Register from "./components/register";
+import userService from './services/userService.js';
 import Signin from "./components/sign-in";
+import Signout from "./components/sign-out";
+
+import Reviews from "./components/reviews";
 import NewReview from "./components/new-review";
 import NewComment from "./components/new-comment";
-import Signout from "./components/sign-out";
+
 
 class App extends Component {
   
@@ -22,7 +26,8 @@ class App extends Component {
 
   componentDidMount(){
     const user = userService.getUser()
-    this.setState({user});    
+    this.setState({user}); 
+       
 
   }
   

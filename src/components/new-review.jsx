@@ -1,7 +1,8 @@
 import React from 'react';
 import Form from './common/form';
 import Joi from 'joi-browser';
-import reviewsService from '../services/reviewsService.js'
+import reviewsService from '../services/reviewsService.js';
+import userService from '../services/userService';
 
 
 class NewReview extends Form {
@@ -20,13 +21,19 @@ class NewReview extends Form {
 
    async doSubmit(){
     const data = {...this.state.data};
-    data.userId = "2222"
+    const user = userService.getUser();
+    data.userId = user._id;
+
+    console.log(data);
     try{
-        await reviewsService.postNewReview(data);
-        
+       await reviewsService.postNewReview(data);
+       this.props.history.replace('/reviews');  
     }
-    catch(error){
-        console.log(error)
+    catch(e){
+       if(e.response && e.response.status === 400){
+           alert('Please Sign in to post review');
+           this.props.history.replace('/sign-in');
+       }
         
     }
     }
