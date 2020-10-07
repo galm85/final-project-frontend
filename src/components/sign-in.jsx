@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './common/form';
 import Joi from 'joi-browser';
 import userService from '../services/userService';
+import {toast} from 'react-toastify';
 
 class Signin extends Form  {
     state = { 
@@ -22,13 +23,17 @@ class Signin extends Form  {
         
         try{
          await userService.signIn(data)
-                alert("welcome Back");  
-                window.location = "/";  
+         await toast(`Welcome back ${this.state.email}`)  
+             window.location = "/";  
         }
         catch(error){
-            alert("try again");
-            this.setState({data:{email:"",password:""}})
-            window.location = "/sign-in";  
+            if(error.response&&error.response.data){
+                const {data} = error.response
+                toast.error(data);
+                this.setState({data:{email:"",
+                password:""}})
+            }
+              
             
         }}
        

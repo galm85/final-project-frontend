@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import userService from "../services/userService";
+import { toast } from "react-toastify";
 
 class Register extends Form {
   state = {
@@ -21,10 +22,17 @@ class Register extends Form {
     password: Joi.string().required().min(6).max(255).label("Password"),
   };
 
-  doSubmit() {
-    console.log("submited");
-    userService.registerNewUser(this.state.data);
-    this.props.history.replace("/sign-in");
+  async doSubmit() {
+
+    try{
+      await userService.registerNewUser(this.state.data);
+      toast('Welcome to Game Reviews')
+      this.props.history.replace("/sign-in");
+    }
+    catch(err){
+      console.log(err)
+
+    }
   }
 
   render() {

@@ -1,6 +1,8 @@
 import React,{Component} from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
+import {ToastContainer} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -12,7 +14,6 @@ import Register from "./components/register";
 import userService from './services/userService.js';
 import Signin from "./components/sign-in";
 import Signout from "./components/sign-out";
-
 import Reviews from "./components/reviews";
 import NewReview from "./components/new-review";
 import NewComment from "./components/new-comment";
@@ -35,6 +36,7 @@ class App extends Component {
   render() { 
     return ( 
       <div className="d-flex flex-column min-vh-100 ">
+        <ToastContainer />
       <header>
         <Navbar  user={this.state.user}/>
       </header>

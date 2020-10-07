@@ -23,6 +23,7 @@ class NewComment extends Form {
      this.props.history.replace('/reviews')
     }
     catch(err){
+      
       console.log(err);
     }
     

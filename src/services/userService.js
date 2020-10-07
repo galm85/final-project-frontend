@@ -12,6 +12,7 @@ export async function registerNewUser(user){
 
 export async function signIn(user){
     const {data} =  await httpService.post(`${apiUrl}users/sign-in`,user);
+    console.log(data)
     localStorage.setItem("Token",data.token);
    }
  
