@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../../styles/review.css';
 
-const Review = ({ title, img, body, comments, _id, date }) => {
+const Review = ({ title, img, body, comments, _id, date ,author}) => {
   return (
         <div className="my-review container">
           
@@ -14,6 +14,7 @@ const Review = ({ title, img, body, comments, _id, date }) => {
                 <div className="col-md-7">
                       <h1>{title}</h1>
                       <p>{new Date(date).toLocaleDateString()} -  {new Date(date).toLocaleTimeString()}</p>
+                      <p>By: {author}</p>
                       <p>{body}</p>
                 </div>
 

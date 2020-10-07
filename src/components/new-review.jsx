@@ -7,33 +7,44 @@ import userService from '../services/userService';
 
 class NewReview extends Form {
     state = { 
-        data:[],
+        data:
+            {
+                title:"",
+                body:"",
+                img:""
+            }
+        ,
         errors:[]
      }
 
 
     schema = {
+        email:Joi.string(),
         _id:Joi.string(),
         title:Joi.string().required(),
         body:Joi.string().required(),
-        img:Joi.string(),
+        img:Joi.string().allow(""),
     }
 
    async doSubmit(){
     const data = {...this.state.data};
+    if(data.img===""){
+        data.img="https://semantic-ui.com/images/wireframe/image.png";
+    }
     const user = userService.getUser();
     data.userId = user._id;
+    data.author = user.email
 
     console.log(data);
     try{
        await reviewsService.postNewReview(data);
-       this.props.history.replace('/reviews');  
+      this.props.history.replace('/reviews');  
     }
     catch(e){
        if(e.response && e.response.status === 400){
            alert('Please Sign in to post review');
-           this.props.history.replace('/sign-in');
-       }
+       this.props.history.replace('/sign-in');
+        }
         
     }
     }
