@@ -31,6 +31,11 @@ class Reviews extends Component {
      }
 
 
+     freeAccountBtn = () =>{
+        toast.error("Your free account not allow to post new review, please register as editor");
+     }
+
+
     render(){ 
         const{reviews,user} = this.state;
         return ( 
@@ -41,10 +46,17 @@ class Reviews extends Component {
                     </div>
                 </div>
                 <div className="row mt-5">
-                    {!user&&
-                    <Link className="btn btn-outline-primary" to='/sign-in'>Add New Review</Link>
+                    {!user && 
+                        // toast.error('Your Account is free and not allowed to add new review'),
+                        <Link disabled className="btn btn-outline-primary" to='sign-in'>Add New Review</Link>
+                    
                     }
-                    {user && 
+                    {user && !user.editor &&
+                        // toast.error('Your Account is free and not allowed to add new review'),
+                        <button  className="btn btn-outline-primary"  onClick={this.freeAccountBtn}>Add New Review</button>
+                    
+                    }
+                    {user && user.editor &&
                      <Link className="btn btn-outline-primary" to='/new-review'>Add New Review</Link>
                     }
                 </div>
