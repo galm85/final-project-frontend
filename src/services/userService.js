@@ -7,7 +7,7 @@ export function getToken(){
 }
 
 export async function registerNewUser(user){
- return await httpService.post(`${apiUrl}users/`,user);
+ return await httpService.post(`${apiUrl}users`,user);
 }
 
 export async function signIn(user){

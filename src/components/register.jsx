@@ -15,6 +15,14 @@ class Register extends Form {
     errors: [],
   };
 
+  isEditor = ()=>{
+    const editor = document.getElementById('editor');
+    if(editor.checked === true){
+      return true;
+    }
+    return false;
+  }
+
   schema = {
     firstName: Joi.string().required().min(2).max(255).label("First Name"),
     lastName: Joi.string().required().min(2).max(255).label("Last Name"),
@@ -25,7 +33,12 @@ class Register extends Form {
   async doSubmit() {
 
     try{
-      await userService.registerNewUser(this.state.data);
+      const data = {...this.state.data};
+      
+      data.editor= this.isEditor();
+      
+      
+      await userService.registerNewUser(data);
       toast('Welcome to Game Reviews')
       this.props.history.replace("/sign-in");
     }
@@ -50,6 +63,17 @@ class Register extends Form {
               {this.renderInput("lastName", "Last Name")}
               {this.renderInput("email", "Email")}
               {this.renderInput("password", "Password", "password")}
+              <div >
+                <label >Register As:</label>
+                <br/>
+                <input type="radio"  name="registerAs" id="free" className="mr-2" defaultChecked/>
+                <label id="Regular">Free Account</label>
+                <br/>
+                <input type="radio" name="registerAs" id="editor" className="mr-2"/>
+                <label id="editor">Editor Account</label>
+                
+              </div>
+              
               {this.renderButton("Register")}
             </form>
           </div>
