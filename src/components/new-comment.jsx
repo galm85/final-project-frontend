@@ -1,26 +1,32 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import reviewsService from '../services/reviewsService.js'
+import reviewsService from '../services/reviewsService.js';
+import userService from '../services/userService.js';
+import {toast} from 'react-toastify';
 
 class NewComment extends Form {
   state = {
-    data:[],
+    data:{},
     errors:[]
   };
 
   schema = {
     title: Joi.string().required().min(2).max(255).label("Title"),
     body: Joi.string().max(1024).label("Comment"),
+    userId: Joi.string()
   };
 
 
   async doSubmit(){
+    const user = userService.getUser();
     const id = this.props.match.params.id;
     const {data} = this.state;
+    data.userId = user.id;
     try{
-     await reviewsService.postNewComment(id,data)
-     this.props.history.replace('/reviews')
+     await reviewsService.postNewComment(id,data);
+     toast("Thank tou for your comment");
+     this.props.history.replace('/reviews');
     }
     catch(err){
       

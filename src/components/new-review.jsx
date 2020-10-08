@@ -3,6 +3,7 @@ import Form from './common/form';
 import Joi from 'joi-browser';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService';
+import {toast} from 'react-toastify';
 
 
 class NewReview extends Form {
@@ -38,6 +39,7 @@ class NewReview extends Form {
     console.log(data);
     try{
        await reviewsService.postNewReview(data);
+       toast("Thank tou for your Review");
       this.props.history.replace('/reviews');  
     }
     catch(e){
