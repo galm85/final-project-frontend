@@ -43,7 +43,16 @@ class Register extends Form {
       this.props.history.replace("/sign-in");
     }
     catch(err){
-      console.log(err)
+     if(err.response&&err.response.data){
+       const {data} = err.response
+       toast.error(data);
+       this.setState({data:{
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      }})
+     }
 
     }
   }
