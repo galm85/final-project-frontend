@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../../styles/review.css';
+import userService from '../../services/userService';
 
 const Review = ({ title, img, body, comments, _id, date ,author}) => {
+  const user = userService.getUser();
   return (
         <div className="my-review container">
           
@@ -37,9 +39,12 @@ const Review = ({ title, img, body, comments, _id, date ,author}) => {
             <hr/>
             <div className="row text-center mb-3">
               <div className="col-md-12">
-
+                  {user&&
           <Link to={`/new-comment/${_id}`} className="btn btn-primary">Add new comment</Link>
-
+                  }
+                  {!user&&
+          <Link to={`register`} className="btn btn-primary">Add new comment</Link>
+                  }
               </div>
           </div>
               

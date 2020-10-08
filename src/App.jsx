@@ -17,6 +17,7 @@ import Signout from "./components/sign-out";
 import Reviews from "./components/reviews";
 import NewReview from "./components/new-review";
 import NewComment from "./components/new-comment";
+import EditUser from "./components/editUser"
 
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/register" component={Register} />
+          <Route path="/edit-user" component={EditUser} />
           <Route path="/reviews" component={Reviews} />
           <Route path="/sign-in" component={Signin} />
           <Route path="/sign-out" component={Signout} />

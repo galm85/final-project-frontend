@@ -2,17 +2,18 @@ import httpService from './httpService'
 import jwtDecode from "jwt-decode";
 import {apiUrl} from '../config.json'
 
-export function getToken(){
-    return localStorage.getItem("Token");
-}
 
 export async function registerNewUser(user){
  return await httpService.post(`${apiUrl}users`,user);
 }
 
+export async function updateUser(user){
+    const {data} = await httpService.put(`${apiUrl}users/update-user`,user);
+    localStorage.setItem("Token",data.token);
+   }
+
 export async function signIn(user){
     const {data} =  await httpService.post(`${apiUrl}users/sign-in`,user);
-    console.log(data)
     localStorage.setItem("Token",data.token);
    }
  
@@ -36,5 +37,6 @@ export default {
     signIn,
     getUser,
     signOut,
-    getToken
+    updateUser
+    
 }
