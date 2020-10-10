@@ -15,10 +15,11 @@ export function postNewReview(review){
 export function postNewComment(id,comment){
     return httpService.patch(`${apiUrl}review/${id}`,comment)
 }
+
    
    
    export default {
        getAllReviews,
        postNewReview,
-       postNewComment
+       postNewComment,
    }

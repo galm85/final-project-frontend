@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 class EditUser extends Form {
   state = {
     data: {
-      
       firstName: "",
       lastName: "",
     },
@@ -42,7 +41,7 @@ class EditUser extends Form {
       console.log(data);
       await userService.updateUser(data);
       toast('Your Account has been update');
-      this.props.history.replace("/reviews");
+      window.location = "/reviews";
     }
     catch(err){
      if(err.response&&err.response.data){

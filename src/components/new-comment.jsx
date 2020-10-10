@@ -7,7 +7,10 @@ import {toast} from 'react-toastify';
 
 class NewComment extends Form {
   state = {
-    data:{},
+    data:{
+      title:"",
+      body:"",
+    },
     errors:[]
   };
 

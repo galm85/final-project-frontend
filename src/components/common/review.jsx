@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../../styles/review.css';
 import userService from '../../services/userService';
+import reviewsService from "../../services/reviewsService";
 
 const Review = ({ title, img, body, comments, _id, date ,author}) => {
   const user = userService.getUser();
+  
   return (
         <div className="my-review container">
           
@@ -22,20 +24,32 @@ const Review = ({ title, img, body, comments, _id, date ,author}) => {
 
             </div>
 
-          
               <hr className="mt-5"/>
-            <div className="row ">
-              <h6>Comments</h6>
-              <div className="col-md-12">
+
+              <div className="row">
+                    <h6>Comments</h6>
+              </div>
+             
               {comments && comments.map((comment, index) =>(
-                <details key={index} className="mt-2">
-                  <summary>{comment.title}</summary>
-                  {comment.body}
-                </details>
+                <div key={index} className="row">
+                  <div className="col-12 d-flex flex-row mt-2">
+                    <React.Fragment>
+                      <details  className="mt-2">
+                      <summary>{comment.title}</summary>
+                        {comment.body}
+                      </details>
+                      {user&&user.editor&&
+                      (<button  className="btn btn-danger ml-auto"><i className="fas fa-trash-alt"></i></button>)
+                      }
+                      
+                     </React.Fragment>
+                  </div>
+                </div>
+                
                  )
                  )}
-              </div>
-            </div>
+       
+           
             <hr/>
             <div className="row text-center mb-3">
               <div className="col-md-12">

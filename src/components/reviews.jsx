@@ -10,13 +10,9 @@ class Reviews extends Component {
         reviews:[],
         user:{}
      }
-
-
-
-     
      
      async componentDidMount(){  
-      const user = userService.getUser();
+      const user = await userService.getUser();
       this.setState({user});
         const allReviews = await reviewsService.getAllReviews();
 
