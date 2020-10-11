@@ -16,6 +16,11 @@ const data = this.props;
 this.setState({data});
 }
 
+  removeReview= async(_id)=>{
+    await reviewsService.removeReview(_id)
+    window.location = '/reviews';
+    console.log("deleted")
+  }
 
 
   removeComment =async (reviewId,comment)=>{
@@ -28,7 +33,7 @@ this.setState({data});
   
   render() { 
    const  {_id,author,date,title,img,body,comments} = this.state.data;
-      const user = userService.getUser();
+   const user = userService.getUser();
     return ( 
       <div className="my-review container">
           
@@ -38,10 +43,11 @@ this.setState({data});
                 </div>
        
                 <div className="col-md-7">
-                      <h1>{title}</h1>
+                      <h1>{title}</h1> 
                       <p>{new Date(date).toLocaleDateString()} -  {new Date(date).toLocaleTimeString()}</p>
                       <p>By: {author}</p>
                       <p>{body}</p>
+                      <button onClick={()=>this.removeReview(_id)} className="btn btn-danger mt-auto">delete</button>
                 </div>
 
             </div>

@@ -12,8 +12,12 @@ export function postNewReview(review){
     
    }
 
+export function removeReview(id){
+    return httpService.delete(`${apiUrl}review/delete/${id}`);
+}
+
 export function postNewComment(id,comment){
-    return httpService.patch(`${apiUrl}review/${id}`,comment)
+    return httpService.patch(`${apiUrl}review/${id}`,comment);
 }
 
 export function removeComment(id,comment){
@@ -30,5 +34,6 @@ export function getCommentsByReview(id){
        postNewReview,
        postNewComment,
        removeComment,
-       getCommentsByReview
+       getCommentsByReview,
+       removeReview
    }
