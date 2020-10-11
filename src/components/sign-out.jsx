@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import  { Component } from 'react';
 import userService from '../services/userService';
 
 class Signout extends Component {
