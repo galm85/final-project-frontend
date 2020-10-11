@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Montserrat:wght@100;200;300&display=swap');
+
+
+body{
+    background: linear-gradient(to bottom, #eef2f3, #8e9eab); 
+
+}
+
+
+.my-footer{
+    background: rgba(0, 0, 0, 0.2);
+    font-family: Montserrat;
+    font-weight: 100;
+}
+
+
+
+/* Page Header style */
+
+.page-header-div{
+    background:rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    height: auto;
+    padding: 20px;
+    color: black;
+    font-family: Montserrat;
+    font-weight: 200;
+
+}

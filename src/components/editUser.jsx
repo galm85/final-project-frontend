@@ -1,6 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
+import PageHeader from './common/pageHeader';
 import userService from "../services/userService";
 import { toast } from "react-toastify";
 
@@ -62,11 +63,8 @@ class EditUser extends Form {
     const  editor = userService.getUser();
     return (
       <div className="container">
-        <div className="row text-center mt-5">
-          <div className="col-md-12">
-            <h1>Edit your profile</h1>
-          </div>
-        </div>
+        <PageHeader title="Edit Profile" text="Edit your profile and account type"/>
+
         <div className="row justify-content-center mt-5">
           <div className="col-md-8">
             <form onSubmit={this.handleSubmit}>

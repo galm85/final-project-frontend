@@ -1,6 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
+import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService.js';
 import {toast} from 'react-toastify';
@@ -44,7 +45,9 @@ class NewComment extends Form {
     
     return (
       <div className="container">
-        <div className="row text-center">
+                        <PageHeader title="New Comment" text="please write a new comment"/>
+
+        <div className="row text-center mt-5">
           <div className="col-md-12">
             <form onSubmit={this.handleSubmit}>
               {this.renderInput("title", "Title")}

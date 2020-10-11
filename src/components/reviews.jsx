@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import Review from './common/review';  
+import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService.js';
 import {Link} from 'react-router-dom';
@@ -36,25 +37,27 @@ class Reviews extends Component {
         const{reviews,user} = this.state;
         return ( 
             <div className="container">
-                <div className="row text-center">
+                
+                <PageHeader title="Reviews" text="read and write reviews"/>
+
+
+
+                <div className="row mt-5 text-center">
                     <div className="col-md-12">
-                         <h1>Reviews</h1>
-                    </div>
-                </div>
-                <div className="row mt-5">
+
+                  
                     {!user && 
-                        // toast.error('Your Account is free and not allowed to add new review'),
-                        <Link disabled className="btn btn-outline-primary" to='sign-in'>Add New Review</Link>
+                        <Link disabled className="btn btn-lg btn-outline-primary" to='sign-in'>Add New Review</Link>
                     
                     }
                     {user && !user.editor &&
-                        // toast.error('Your Account is free and not allowed to add new review'),
-                        <button  className="btn btn-outline-primary"  onClick={this.freeAccountBtn}>Add New Review</button>
+                        <button  className="btn btn-lg btn-outline-primary"  onClick={this.freeAccountBtn}>Add New Review</button>
                     
                     }
                     {user && user.editor &&
-                     <Link className="btn btn-outline-primary" to='/new-review'>Add New Review</Link>
+                     <Link className="btn btn-lg btn-outline-primary" to='/new-review'>Add New Review</Link>
                     }
+                      </div>
                 </div>
 
                 <div className="row mt-5">

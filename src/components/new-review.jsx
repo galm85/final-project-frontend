@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './common/form';
+import PageHeader from './common/pageHeader';
 import Joi from 'joi-browser';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService';
@@ -56,7 +57,9 @@ class NewReview extends Form {
     render() { 
         return ( 
             <div className="container">
-                <div className="row text-center">
+                 <PageHeader title="New Review" text="Please insert a new review"/>
+
+                <div className="row text-center mt-5">
                     <div className="col-md-12">
                         <form onSubmit={this.handleSubmit}>
                             {this.renderInput('title','Title')}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './common/form';
+import PageHeader from './common/pageHeader';
 import Joi from 'joi-browser';
 import userService from '../services/userService';
 import {toast} from 'react-toastify';
@@ -45,14 +46,11 @@ class Signin extends Form  {
     render() { 
         return ( 
         <div className="container">
-            <div className="row text-center">
-                <div className="col-md-12">
-                    <h1>Please sign in</h1>
-                </div>
-            </div>
+                    <PageHeader title="Sign In" text="Please sign in to your account"/>
 
 
-            <div className="row">
+
+            <div className="row mt-5">
                     <div className="col-md-12">
                         <form onSubmit={this.handleSubmit}>
                             {this.renderInput('email','Email')}

@@ -1,3 +1,3 @@
-1) add protected route
-2) add edit user 
-3) manager account - only one
+ add protected route
+  manager account - only one
+  style for single review

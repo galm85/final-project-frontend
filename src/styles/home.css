@@ -1,0 +1,21 @@
+.main-title{
+    background:rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    height: 200px;
+    box-shadow: 2,2,black;
+    padding: 20px;
+    color: black;
+    line-height: 3;
+}
+.main-title h1{
+    font-family: 'Carter One';
+}
+
+.main-title h5,p{
+    font-family: Montserrat;
+    font-weight: 100;
+    color: gray;
+    font-size: 2rem;
+}
+
+

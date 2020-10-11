@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {NavLink,Link} from 'react-router-dom'
+import {NavLink,Link} from 'react-router-dom';
+import '../styles/navbar.css';
 
 class NavBar extends Component {
     state = {  }
@@ -9,18 +10,18 @@ class NavBar extends Component {
         return ( 
             
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                <Link className="navbar-brand" to="/">Video Games</Link>
+                <Link className="navbar-brand my-link" to="/">Games Reviews</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarsExample04">
                     <ul className="navbar-nav mr-auto">
-                         <li className="nav-item active">
-                             <NavLink className="nav-link" to="">About <span className="sr-only">(current)</span></NavLink>
+                         <li className="nav-item">
+                             <NavLink className="nav-link my-link" to="/about">About</NavLink>
                         </li>
                         <li className="nav-item">
-                             <NavLink className="nav-link" to="/reviews">Reviews</NavLink>
+                             <NavLink className="nav-link my-link" to="/reviews">Reviews</NavLink>
                         </li>
                     </ul>
 
@@ -29,23 +30,23 @@ class NavBar extends Component {
                         
                         {user && (
                             <React.Fragment>
-                        <li className="nav-item active">
-                        <NavLink className="nav-link" to="/edit-user">edit User<span className="sr-only">(current)</span></NavLink>
+                        <li className="nav-item ">
+                        <NavLink className="nav-link my-link" to="/edit-user">edit User<span className="sr-only">(current)</span></NavLink>
                         </li>
 
-                        <li className="nav-item active">
-                             <NavLink className="nav-link" to="/sign-out">{user.email}<span className="sr-only">(current)</span></NavLink>
+                        <li className="nav-item ">
+                             <NavLink className="nav-link my-link" to="/sign-out">{user.email}<span className="sr-only">(current)</span></NavLink>
                         </li>
                         </React.Fragment>
                         )}
 
                         {!user && (
                             <React.Fragment>
-                         <li className="nav-item active">
-                             <NavLink className="nav-link" to="/sign-in">Sign In <span className="sr-only">(current)</span></NavLink>
+                         <li className="nav-item">
+                             <NavLink className="nav-link my-link" to="/sign-in">Sign In <span className="sr-only">(current)</span></NavLink>
                         </li>
                         <li className="nav-item">
-                             <NavLink className="nav-link" to="/register">Register</NavLink>
+                             <NavLink className="nav-link my-link" to="/register">Register</NavLink>
                         </li>
                         </React.Fragment>
                         )}
