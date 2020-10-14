@@ -2,14 +2,14 @@ import httpService from './httpService'
 import {apiUrl} from '../config.json'
 //"apiUrl":"http://localhost:4000/"
 
+
+
 export function getAllReviews(){
     return httpService.get(`${apiUrl}review`);
-    
    }
 
 export function postNewReview(review){
     return httpService.post(`${apiUrl}review/`,review);
-    
    }
 
 export function removeReview(id){
@@ -27,6 +27,10 @@ export function removeComment(id,comment){
 export function getCommentsByReview(id){
     return httpService.get(`${apiUrl}review/comments/${id}`);
 }
+
+export function addToFavorite(userId,review){
+    return httpService.post(`${apiUrl}review/favorite/${userId}`,review);
+}
    
    
    export default {
@@ -35,5 +39,6 @@ export function getCommentsByReview(id){
        postNewComment,
        removeComment,
        getCommentsByReview,
-       removeReview
+       removeReview,
+       addToFavorite
    }

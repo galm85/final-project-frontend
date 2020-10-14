@@ -30,8 +30,14 @@ this.setState({data});
     
   }
 
-  addToFavorite = async ()=>{
-    console.log("add to fav")
+  addToFavorite = async (userId,review)=>{
+    
+    try{
+      await reviewsService.addToFavorite(userId,review);
+      console.log("add to fav");
+    }catch(error){
+      console.log(error);
+    }
   }
 
   
@@ -40,7 +46,6 @@ this.setState({data});
    const user = userService.getUser();
     return ( 
       <div className="my-review container">
-          
           <div className="row">
                 <div className="col-md-5">
                      <img src={img} alt=""/>
@@ -51,13 +56,11 @@ this.setState({data});
                       <p>{new Date(date).toLocaleDateString()} -  {new Date(date).toLocaleTimeString()}</p>
                       <p>By: {author}</p>
                       <hr/>
-                      <p>{body}</p>
-                      
+                      <p>{body}</p>      
                 </div>
 
                 <div className="col-md-1 review-btn">
-                
-                  <button className="btn btn-primary  " onClick={this.addToFavorite}>
+                  <button className="btn btn-primary" onClick={()=>this.addToFavorite(user._id,this.state.data)}>
                       <i className="far fa-star"></i>
                   </button>
 
@@ -83,7 +86,9 @@ this.setState({data});
                         {comment.body}
                       </details>
                       {user&&user.editor&&
-                      (<button onClick={ ()=> this.removeComment(_id,comment)}  className="btn btn-danger ml-auto"><i className="fas fa-trash-alt"></i></button>)
+                      (<button onClick={ ()=> this.removeComment(_id,comment)}  className="btn btn-danger ml-auto">
+                        <i className="fas fa-trash-alt"></i>
+                      </button>)
                       }
                       
                      </React.Fragment>
