@@ -23,11 +23,14 @@ class NavBar extends Component {
                         <li className="nav-item">
                              <NavLink className="nav-link my-link" to="/reviews">Reviews</NavLink>
                         </li>
-                        <li className="nav-item">
-                             <NavLink className="nav-link my-link" to={`/favorites/${user._id}`}>My Favorites</NavLink>
-                             
+                        {user&&(
+                            <li className="nav-item">
+                            <NavLink className="nav-link my-link" to={`/favorites/${user._id}`}>My Favorites</NavLink>
                             
-                        </li>
+                           
+                       </li>
+                        )}
+                        
                     </ul>
 
 

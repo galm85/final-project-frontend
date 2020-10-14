@@ -4,21 +4,24 @@ import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js'
 
 class Favorites extends Component {
-    state = {  }
+    state = { 
+        favorites:[]
+     }
     
     
     async componentDidMount(){
        let  userId = this.props.match.params.userId;
         let favorites = await reviewsService.getUserFavorite(userId);
-        this.setState({favorites:favorites.data});
-        console.log(this.state.favorites);
+        this.setState({favorites:favorites.data.fav});
+        console.log(this.state);
     }
 
     
     
     render() { 
         
-
+        let {favorites} = this.state;        
+        
 
         return ( 
             <div className="container">
@@ -27,7 +30,11 @@ class Favorites extends Component {
 
                 <div className="row">
                     <div className="col-md-12">
-                        <Review />
+
+                       {favorites.length>0 && favorites.map((fav,index)=>(
+                        <Review key={index} _id={fav._id} author={fav.author} date={fav.createdAt} title={fav.title} img={fav.img}  body={fav.body} comments={fav.comments}/>
+                       ))} 
+                        
                     </div>
                 </div>
             </div>
