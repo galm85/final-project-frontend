@@ -33,7 +33,6 @@ class NewComment extends Form {
      this.props.history.replace('/reviews');
     }
     catch(err){
-      
       console.log(err);
     }
     
@@ -45,9 +44,11 @@ class NewComment extends Form {
     
     return (
       <div className="container">
-                        <PageHeader title="New Comment" text="please write a new comment"/>
-
-        <div className="row text-center mt-5">
+         
+         <PageHeader title="New Comment" text="please write a new comment"/>
+      
+      
+      <div className="row text-center mt-5">
           <div className="col-md-12">
             <form onSubmit={this.handleSubmit}>
               {this.renderInput("title", "Title")}
@@ -55,7 +56,9 @@ class NewComment extends Form {
               {this.renderButton("Post")}
             </form>
           </div>
-        </div>
+      </div>
+      
+      
       </div>
     );
   }

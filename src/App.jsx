@@ -17,7 +17,8 @@ import Signout from "./components/sign-out";
 import Reviews from "./components/reviews";
 import NewReview from "./components/new-review";
 import NewComment from "./components/new-comment";
-import EditUser from "./components/editUser"
+import EditUser from "./components/editUser";
+import Favorites from "./components/favorites";
 
 
 class App extends Component {
@@ -52,6 +53,7 @@ class App extends Component {
           <Route path="/sign-out" component={Signout} />
           <Route path="/new-review" component={NewReview} />
           <Route path="/new-comment/:id" component={NewComment} />
+          <Route path="/favorites/:userId" component={Favorites}/>
         </Switch>
       </main>
 

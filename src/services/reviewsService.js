@@ -31,6 +31,10 @@ export function getCommentsByReview(id){
 export function addToFavorite(userId,review){
     return httpService.post(`${apiUrl}review/favorite/${userId}`,review);
 }
+
+export function getUserFavorite(userId){
+    return httpService.get(`${apiUrl}review/favorite/${userId}`)
+}
    
    
    export default {
@@ -40,5 +44,6 @@ export function addToFavorite(userId,review){
        removeComment,
        getCommentsByReview,
        removeReview,
-       addToFavorite
+       addToFavorite,
+       getUserFavorite
    }

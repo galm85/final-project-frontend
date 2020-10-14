@@ -34,7 +34,7 @@ this.setState({data});
     
     try{
       await reviewsService.addToFavorite(userId,review);
-      console.log("add to fav");
+      console.log(review);
     }catch(error){
       console.log(error);
     }
