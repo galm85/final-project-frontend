@@ -19,7 +19,21 @@ export async function signIn(user){
  
 export function signOut(){
     localStorage.removeItem('Token');
-}   
+} 
+
+export function getUserFavorite(userId){
+    return httpService.get(`${apiUrl}users/favorite/${userId}`)
+}
+
+export function addToFavorite(userId,review){
+    return httpService.put(`${apiUrl}users/favorite/${userId}`,review);
+}
+
+export function removeFromFavorite(userId,_id){
+    return httpService.put(`${apiUrl}users/favorites/delete/${userId}`,{"_id":_id});
+}
+
+
 
  export function getUser(){
      try{
@@ -37,6 +51,9 @@ export default {
     signIn,
     getUser,
     signOut,
-    updateUser
+    updateUser,
+    getUserFavorite,
+    addToFavorite,
+    removeFromFavorite
     
 }
