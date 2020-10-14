@@ -1,3 +1,4 @@
  add protected route
   manager account - only one
-  style for single review
+  add to favorite
+  edit review

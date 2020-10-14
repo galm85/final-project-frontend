@@ -30,6 +30,10 @@ this.setState({data});
     
   }
 
+  addToFavorite = async ()=>{
+    console.log("add to fav")
+  }
+
   
   render() { 
    const  {_id,author,date,title,img,body,comments} = this.state.data;
@@ -42,12 +46,24 @@ this.setState({data});
                      <img src={img} alt=""/>
                 </div>
        
-                <div className="col-md-7">
+                <div className="col-md-6">
                       <h1>{title}</h1> 
                       <p>{new Date(date).toLocaleDateString()} -  {new Date(date).toLocaleTimeString()}</p>
                       <p>By: {author}</p>
+                      <hr/>
                       <p>{body}</p>
-                      <button onClick={()=>this.removeReview(_id)} className="btn btn-danger mt-auto">delete</button>
+                      
+                </div>
+
+                <div className="col-md-1 review-btn">
+                
+                  <button className="btn btn-primary  " onClick={this.addToFavorite}>
+                      <i className="far fa-star"></i>
+                  </button>
+
+                  <button onClick={()=>this.removeReview(_id)} className="btn btn-danger  mt-3 ">
+                      <i className="fas fa-trash-alt"></i>
+                  </button>
                 </div>
 
             </div>

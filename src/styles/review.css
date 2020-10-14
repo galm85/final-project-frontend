@@ -11,3 +11,17 @@
     max-width: 100%;
 
 }
+
+.my-review h1{
+    font-family: Montserrat;
+    font-weight: 300;
+}
+
+.my-review p{
+    font-size: 1.2rem;
+    color:black;
+}
+
+.review-btn .btn{
+width: 100%;
+}
