@@ -8,6 +8,10 @@ export function getAllReviews(){
     return httpService.get(`${apiUrl}review`);
    }
 
+export function getReviewByTitle(title){
+    return httpService.get(`${apiUrl}review/${title}`)
+}
+
 export function postNewReview(review){
     return httpService.post(`${apiUrl}review/`,review);
    }
@@ -45,5 +49,6 @@ export function getUserFavorite(userId){
        getCommentsByReview,
        removeReview,
        addToFavorite,
-       getUserFavorite
+       getUserFavorite,
+       getReviewByTitle
    }

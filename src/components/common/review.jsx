@@ -15,6 +15,7 @@ class Review extends Component {
 componentDidMount(){
 const data = this.props;
 this.setState({data});
+
 }
 
   removeReview= async(_id)=>{
@@ -50,7 +51,8 @@ this.setState({data});
 }
   
   render() { 
-   const  {_id,author,date,title,img,body,comments,origin} = this.state.data;
+   const  {_id,author,date,title,img,body,comments,origin} = this.props;
+   
    const user = userService.getUser();
     return ( 
       <div className="my-review container">
