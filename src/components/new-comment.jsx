@@ -52,7 +52,7 @@ class NewComment extends Form {
           <div className="col-md-12">
             <form onSubmit={this.handleSubmit}>
               {this.renderInput("title", "Title")}
-              {this.renderInput("body", "Type your comment")}
+              {this.renderTextArea("body", "Type your comment","10")}
               {this.renderButton("Post")}
             </form>
           </div>

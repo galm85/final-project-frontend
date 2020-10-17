@@ -52,7 +52,7 @@ class Form extends Component {
     );
   }
 
-  renderTextArea(name,placeholder,type="text"){
+  renderTextArea(name,placeholder,rows,type="text"){
     return (
       <TextArea
         name={name}
@@ -61,6 +61,7 @@ class Form extends Component {
         onChange={this.handleChange}
         errors={this.state.errors[name]}
         value={this.state.data[name]}
+        rows={rows}
       />
     );
   }

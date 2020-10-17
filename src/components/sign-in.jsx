@@ -50,7 +50,7 @@ class Signin extends Form  {
 
 
 
-            <div className="row mt-5">
+            <div className="row mt-5 text-center">
                     <div className="col-md-12">
                         <form onSubmit={this.handleSubmit}>
                             {this.renderInput('email','Email')}
