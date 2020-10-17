@@ -63,8 +63,8 @@ class NewReview extends Form {
                     <div className="col-md-12">
                         <form onSubmit={this.handleSubmit}>
                             {this.renderInput('title','Title')}
-                            {this.renderInput('body',"Text")}
                             {this.renderInput('img',"Image(url)")}
+                            {this.renderTextArea('body',"Review")}
                             {this.renderButton('Post')}
                             
                         </form>

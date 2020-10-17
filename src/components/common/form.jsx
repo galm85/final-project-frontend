@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "./input";
+import TextArea from "./textarea";
 import Joi from "joi-browser";
 
 class Form extends Component {
@@ -41,6 +42,19 @@ class Form extends Component {
   renderInput(name, placeholder, type = "text") {
     return (
       <Input
+        name={name}
+        placeholder={placeholder}
+        type={type}
+        onChange={this.handleChange}
+        errors={this.state.errors[name]}
+        value={this.state.data[name]}
+      />
+    );
+  }
+
+  renderTextArea(name,placeholder,type="text"){
+    return (
+      <TextArea
         name={name}
         placeholder={placeholder}
         type={type}

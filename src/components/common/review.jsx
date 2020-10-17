@@ -54,7 +54,7 @@ this.setState({data});
    const user = userService.getUser();
     return ( 
       <div className="my-review container">
-          <div className="row">
+          <div className="row mt-5">
                 <div className="col-md-5">
                      <img src={img} alt=""/>
                 </div>
