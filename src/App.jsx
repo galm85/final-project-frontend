@@ -19,6 +19,7 @@ import NewReview from "./components/new-review";
 import NewComment from "./components/new-comment";
 import EditUser from "./components/editUser";
 import Favorites from "./components/favorites";
+import FullReview from "./components/fullReview";
 
 
 class App extends Component {
@@ -54,6 +55,7 @@ class App extends Component {
           <Route path="/new-review" component={NewReview} />
           <Route path="/new-comment/:id" component={NewComment} />
           <Route path="/favorites/:userId" component={Favorites}/>
+          <Route path="/reviews-full/:id" component={FullReview}/>
         </Switch>
       </main>
 

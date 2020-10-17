@@ -48,16 +48,23 @@ class Reviews extends Component {
      }
 
      handleChange = ({currentTarget:input})=>{
-      this.setState({search:input.value})
+      this.setState({search:input.value});
+      let search = this.state.search;
+      if(search!==""){
+        this.getReviewsByTitle(search); 
+            
+     }else{
+         this.getAllReviews();
+     }
+
     }
 
      handleSubmit = async (e)=>{
         e.preventDefault();
         let search = this.state.search;
         if(search!==""){
-
            this.getReviewsByTitle(search); 
-            
+               
         }else{
             this.getAllReviews();
         }
@@ -66,25 +73,18 @@ class Reviews extends Component {
 
     render(){ 
         const{reviews,user,search} = this.state;
-        
-        console.log(reviews)
         return ( 
-           
             <div className="container">
-                
                 <PageHeader title="Reviews" text="read and write reviews"/>
 
                 <div className="row mt-3 text-center">
                     <div className="col-md-12">
                         <form className="form-group d-flex" onSubmit={this.handleSubmit}>
                             <input placeholder="Search" type="text" value={search}  className="form-control mr-3" onChange={this.handleChange} />
-                            <button  type="submit" className="btn btn-primary"><i className="fas fa-search"></i></button>
-                            
+                            <button  type="submit" className="btn btn-primary"><i className="fas fa-search"></i></button>    
                         </form>
-                        <p>
-                        {this.state.search}
-
-                        </p>
+                        {search && (<p>Results for: {this.state.search}</p>)}
+                        
                     </div>
                 </div>
 
@@ -95,16 +95,14 @@ class Reviews extends Component {
                   
                     {!user && 
                         <Link disabled className="btn btn-lg btn-outline-primary" to='sign-in'>Add New Review</Link>
-                    
                     }
                     {user && !user.editor &&
                         <button  className="btn btn-lg btn-outline-primary"  onClick={this.freeAccountBtn}>Add New Review</button>
-                    
                     }
                     {user && user.editor &&
                      <Link className="btn btn-lg btn-outline-primary" to='/new-review'>Add New Review</Link>
                     }
-                      </div>
+                    </div>
                 </div>
 
                 <div className="row mt-5">
@@ -122,6 +120,10 @@ class Reviews extends Component {
                                     origin="review"/>
                             
                         ))}
+
+                        {reviews.length===0 &&
+                        <p>No Reviews Found</p>
+                        }
                     
                     </div>
                 </div>
