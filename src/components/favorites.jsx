@@ -3,6 +3,14 @@ import Review from './common/review';
 import PageHeader from './common/pageHeader';
 import userService from '../services/userService';
 
+
+/**
+ * This component shows all favorite reviews of a user.
+ * only sign-in user can have an individual favorite page.
+ * the page contain all the user chosen reviews form the reviews component or the full review components
+ * 
+ */
+
 class Favorites extends Component {
     state = { 
         favorites:[]

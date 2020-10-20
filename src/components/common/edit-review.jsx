@@ -1,21 +1,15 @@
-import React from 'react';
-import Form from './common/form';
-import PageHeader from './common/pageHeader';
-import Joi from 'joi-browser';
-import reviewsService from '../services/reviewsService.js';
-import userService from '../services/userService';
-import {toast} from 'react-toastify';
-
+import React from "react";
+import Joi from "joi-browser";
+import Form from "../common/form";
+import PageHeader from "./pageHeader";
+import { toast } from "react-toastify";
+import reviewsService from "../../services/reviewsService";
 
 /**
- * this component is only visible to an "editor-user" from the reviews component.
- * it is allow the the "editor user" to post a new review (title,body,img - not must);
- * 
- * 
+ * In this component: only "editor user" can get and update the review (title,body,img)
  */
 
-
-class NewReview extends Form {
+class EditReview extends Form {
     state = { 
         data:
             {
@@ -28,8 +22,14 @@ class NewReview extends Form {
      }
 
 
+     async componentDidMount(){
+         const id = this.props.match.params.id;
+         const {data} = await reviewsService.getReviewById(id);
+         this.setState({data:{_id:id,title:data.title,body:data.body,img:data.img}})
+     }
+
+
     schema = {
-        email:Joi.string(),
         _id:Joi.string(),
         title:Joi.string().required(),
         body:Joi.string().required(),
@@ -38,17 +38,13 @@ class NewReview extends Form {
 
    async doSubmit(){
     const data = {...this.state.data};
+    console.log(data);
     if(data.img===""){
         data.img="https://semantic-ui.com/images/wireframe/image.png";
     }
-    const user = userService.getUser();
-    data.userId = user._id;
-    data.author = user.email
-
-    
     try{
-       await reviewsService.postNewReview(data);
-       toast("Thank tou for your Review");
+       await reviewsService.editReview(data);
+       toast("review updated");
       this.props.history.replace('/reviews');  
     }
     catch(e){
@@ -63,9 +59,10 @@ class NewReview extends Form {
 
 
     render() { 
+        console.log(this.state.data)
         return ( 
             <div className="container">
-                 <PageHeader title="New Review" text="Please insert a new review"/>
+                 <PageHeader title="edit Review"/>
 
                 <div className="row text-center mt-5">
                     <div className="col-md-12">
@@ -79,8 +76,9 @@ class NewReview extends Form {
                     </div>
                 </div>
             </div>
-         );
+        );
     }
 }
+
  
-export default NewReview;
+export default EditReview;

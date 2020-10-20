@@ -5,7 +5,13 @@ import '../../styles/fullReview.css';
 import {toast} from 'react-toastify';
 import { Link } from "react-router-dom";
 
-
+/**
+ * This component shows full review of a selected review from the reviews page;
+ * this is only visible to sign-in users
+ * 
+ * A "sign-in user" can post comment and add it to his favorite page;
+ * an "Editor user" in addition can edit or delete the review and the comments;
+ */
 
 class FullReview extends Component {
     state = {  }
@@ -87,11 +93,19 @@ class FullReview extends Component {
                                 </button>    
                         )}
 
+            
+                        {user&&user.editor  &&(
+                            <React.Fragment>
+                                <Link to={`/reviews/edit-review/${review._id}`} className="btn btn-warning"><i class="fas fa-edit"></i></Link>
 
-                        {user&&user.editor  &&
-                             <button onClick={()=>this.removeReview(review._id)} className="btn btn-danger ml-1">
-                                 <i className="fas fa-trash-alt"></i>
-                            </button>
+                                <button onClick={()=>this.removeReview(review._id)} className="btn btn-danger ml-1">
+                                     <i className="fas fa-trash-alt"></i>
+                                </button>
+
+                            </React.Fragment>
+                        )
+
+                            
                         }
                         </div>
                     </div>

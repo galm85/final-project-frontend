@@ -6,6 +6,12 @@ import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService.js';
 import {toast} from 'react-toastify';
 
+
+/**
+ * this component allows only to "sign-in" user (free/editor) to post a new comment to a review.
+ * the user can go to this components throw the fullReview component.
+ */
+
 class NewComment extends Form {
   state = {
     data:{

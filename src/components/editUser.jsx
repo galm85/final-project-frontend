@@ -5,6 +5,11 @@ import PageHeader from './common/pageHeader';
 import userService from "../services/userService";
 import { toast } from "react-toastify";
 
+
+/**
+ * This component allow to a sign-in user to change his user data and his account type (free/editor)
+ */
+
 class EditUser extends Form {
   state = {
     data: {
@@ -19,6 +24,7 @@ class EditUser extends Form {
       this.setState({data:{firstName:data.firstName,lastName:data.lastName}});
   }
 
+  //isEditor function check which type of account the user wants (returns true if the user is an editor);
   isEditor = ()=>{
     const editor = document.getElementById('editor');
     if(editor.checked === true){
@@ -39,7 +45,6 @@ class EditUser extends Form {
       const data = {...this.state.data};
       data.editor= this.isEditor();
       data._id = _id; 
-      console.log(data);
       await userService.updateUser(data);
       toast('Your Account has been update');
       window.location = "/reviews";
@@ -60,20 +65,26 @@ class EditUser extends Form {
    }
 
   render() {
-    const  editor = userService.getUser();
+    const  user = userService.getUser();
     return (
       <div className="container">
-        <PageHeader title="Edit Profile" text="Edit your profile and account type"/>
+          <PageHeader title="Edit Profile" text="Edit your profile and account type"/>
 
         <div className="row justify-content-center mt-5">
           <div className="col-md-8">
             <form onSubmit={this.handleSubmit}>
               {this.renderInput("firstName", "First Name")}
               {this.renderInput("lastName", "Last Name")}
-              <div >
+            <div >
+
                 <label >Register As:</label>
                 <br/>
-                {editor.editor && (
+
+                
+                {/* this part checks if the user is already have an editor account or free account 
+                and change the selected radio option according to it  */}
+                
+                {user.editor && (
                     <React.Fragment>
                     <input type="radio"  name="registerAs" id="free" className="mr-2"  />
                     <label id="Regular">Free Account</label>
@@ -83,8 +94,7 @@ class EditUser extends Form {
                     </React.Fragment>
                 )}
                 
-               
-                {!editor.editor && (
+                {!user.editor && (
                     <React.Fragment>
                     <input type="radio"  name="registerAs" id="free" className="mr-2" defaultChecked />
                     <label id="Regular">Free Account</label>
@@ -93,10 +103,8 @@ class EditUser extends Form {
                     <label id="editor">Editor Account</label>
                     </React.Fragment>
                 )}
-                
-                
               </div>
-              
+            
               {this.renderButton("Update")}
             </form>
           </div>

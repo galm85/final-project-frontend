@@ -6,6 +6,15 @@ import userService from '../services/userService.js';
 import {Link} from 'react-router-dom';
 import {toast} from 'react-toastify';
 
+
+/**
+ * This component get all the reviews from the server and display each one in a "Review" component;
+ * everybody has an access to this component (guest,users,editors).
+ * guest - can only see the simple review display.
+ * user - can see the simple display, read in full-mode ,read/add comments to each review and add to favorites
+ * editor - in addition to the user access, can also to add/edit/delete reviews and comments.
+ */
+
 class Reviews extends Component {
     state = { 
         reviews:[],
@@ -19,6 +28,9 @@ class Reviews extends Component {
       this.getAllReviews();
      
      }
+
+
+     ////functions 
 
      async getAllReviews(){
         const allReviews = await reviewsService.getAllReviews();
@@ -51,8 +63,7 @@ class Reviews extends Component {
       this.setState({search:input.value});
       let search = this.state.search;
       if(search!==""){
-        this.getReviewsByTitle(search); 
-            
+        this.getReviewsByTitle(search);     
      }else{
          this.getAllReviews();
      }
@@ -77,18 +88,23 @@ class Reviews extends Component {
             <div className="container">
                 <PageHeader title="Reviews" text="read and write reviews"/>
 
+
+                {/* this div allow to search review by type the title of the review */}
                 <div className="row mt-3 text-center">
                     <div className="col-md-12">
                         <form className="form-group d-flex" onSubmit={this.handleSubmit}>
                             <input placeholder="Search" type="text" value={search}  className="form-control mr-3" onChange={this.handleChange} />
                             <button  type="submit" className="btn btn-primary"><i className="fas fa-search"></i></button>    
                         </form>
-                        {search && (<p>Results for: {this.state.search}</p>)}
+                
+                 {search && (<p>Results for: {this.state.search}</p>)}
                         
                     </div>
                 </div>
 
 
+
+            {/* this div display data according to the user account */}
                 <div className="row mt-5 text-center">
                     <div className="col-md-12">
 

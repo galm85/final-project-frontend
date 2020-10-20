@@ -20,6 +20,7 @@ import NewComment from "./components/new-comment";
 import EditUser from "./components/editUser";
 import Favorites from "./components/favorites";
 import FullReview from "./components/common/fullReview";
+import EditReview from "./components/common/edit-review";
 
 
 class App extends Component {
@@ -49,6 +50,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/register" component={Register} />
           <Route path="/edit-user" component={EditUser} />
+          <Route path="/reviews/edit-review/:id" component={EditReview}/>
           <Route path="/reviews" component={Reviews} />
           <Route path="/sign-in" component={Signin} />
           <Route path="/sign-out" component={Signout} />

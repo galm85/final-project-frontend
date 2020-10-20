@@ -20,6 +20,10 @@ export function postNewReview(review){
     return httpService.post(`${apiUrl}review/`,review);
    }
 
+export function editReview(review){
+    return httpService.put(`${apiUrl}review/edit-review`,review);
+   }
+
 export function removeReview(id){
     return httpService.delete(`${apiUrl}review/delete/${id}`);
 }
@@ -55,5 +59,6 @@ export function getUserFavorite(userId){
        addToFavorite,
        getUserFavorite,
        getReviewByTitle,
-       getReviewById
+       getReviewById,
+       editReview
    }

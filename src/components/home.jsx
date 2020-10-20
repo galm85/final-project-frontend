@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/home.css';
-import SignIn from './sign-in';
 import userService from '../services/userService.js';
 import {Link} from 'react-router-dom';
 
@@ -32,16 +31,14 @@ const Home = () => {
              </div>
 
              <div className="row text center mt-3">
-             <div className="col-md-10 main-title mx-auto shadow text-center">
+                <div className="col-md-10 main-title mx-auto shadow text-center">
                     <p>please
                     <Link to="sign-in" > sign in </Link>
                     or
                     <Link to="sign-in" > Register </Link>
                     </p>
-                    
-
-             </div>       
-                    </div>
+                </div>       
+            </div>
        
        
        
