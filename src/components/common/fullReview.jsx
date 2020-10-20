@@ -65,18 +65,16 @@ class FullReview extends Component {
                         </div>
                     </div>
 
-
-
                     <div className="row justify-content-center mt-5">
                         <div className="col-md-8 ">
-                       <p>{new Date(review.createdAt).toLocaleDateString()} -  {new Date(review.createdAt).toLocaleTimeString()}</p>
+                             <p>{new Date(review.createdAt).toLocaleDateString()} -  {new Date(review.createdAt).toLocaleTimeString()}</p>
                             <p>{review.author}</p>
                         </div>
                     </div>
 
                     <div className="row justify-content-center mt-5">
                         <div className="col-md-8">
-                        <p className="text-justify">{review.body}</p>
+                            <p className="text-justify">{review.body}</p>
                         </div>
                     </div>
 
@@ -89,7 +87,6 @@ class FullReview extends Component {
                                 </button>    
                         )}
 
-                        
 
                         {user&&user.editor  &&
                              <button onClick={()=>this.removeReview(review._id)} className="btn btn-danger ml-1">
@@ -107,11 +104,12 @@ class FullReview extends Component {
                     </div>
                     </div>
 
+                    <div  className="row justify-content-center mb-5">
+                    <div className="col-md-8 ">
                     {review.comments && review.comments.map((comment, index) =>(
-                    <div key={index} className="row justify-content-center mb-5">
-                    <div className="col-md-8 d-flex flex-row mt-2">
+                    
                       <React.Fragment>
-                        <details  className="mt-2 ">
+                        <details className="d-flex flex-column mt-2" key={index} >
                         <summary>{comment.title}</summary>
                           {comment.body}
                         </details>
@@ -123,10 +121,11 @@ class FullReview extends Component {
                           )}
                         
                        </React.Fragment>
+                       ))}
                     </div>
                   </div>
                 
-                 ))}
+                 
 
                     <div className="row justify-content-center ">
                         <div className="col-12-8">

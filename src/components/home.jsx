@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/home.css';
 import SignIn from './sign-in';
 import userService from '../services/userService.js';
+import {Link} from 'react-router-dom';
 
 
 const Home = () => {
@@ -27,13 +28,20 @@ const Home = () => {
                         <i style={{color:"green"}} className="fab fa-xbox mx-3"></i>|    
                         <i style={{color:"yellow"}} className="fas fa-gamepad mx-3"></i>|     
                         <i style={{color:"red"}} className="fas fa-desktop mx-3"></i></p>
-                </div>
-                {!user && 
-                <SignIn />
-                }
+                </div> 
              </div>
-       
-       
+
+             <div className="row text center mt-3">
+             <div className="col-md-10 main-title mx-auto shadow text-center">
+                    <p>please
+                    <Link to="sign-in" > sign in </Link>
+                    or
+                    <Link to="sign-in" > Register </Link>
+                    </p>
+                    
+
+             </div>       
+                    </div>
        
        
        

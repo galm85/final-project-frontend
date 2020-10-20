@@ -64,7 +64,7 @@ class NewReview extends Form {
                         <form onSubmit={this.handleSubmit}>
                             {this.renderInput('title','Title')}
                             {this.renderInput('img',"Image(url)")}
-                            {this.renderTextArea('body',"Review")}
+                            {this.renderTextArea('body',"Review","10")}
                             {this.renderButton('Post')}
                             
                         </form>

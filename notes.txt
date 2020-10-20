@@ -1,3 +1,4 @@
  add protected route
-  manager account - only one
-create full page review and review cards
+ manager account - only one
+ edit review by manager
+return buttons

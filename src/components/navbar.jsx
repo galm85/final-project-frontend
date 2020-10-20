@@ -37,13 +37,17 @@ class NavBar extends Component {
                     <ul className="navbar-nav ml-auto">
                         
                         {user && (
-                            <React.Fragment>
+                        <React.Fragment>
+                        <li className="nav-link my-link ">
+                             {user.email} |
+                        </li>
                         <li className="nav-item ">
-                        <NavLink className="nav-link my-link" to="/edit-user">edit User<span className="sr-only">(current)</span></NavLink>
+                        <NavLink className="nav-link my-link" to="/edit-user">edit User |<span className="sr-only">(current)</span></NavLink>
                         </li>
 
+                        
                         <li className="nav-item ">
-                             <NavLink className="nav-link my-link" to="/sign-out">{user.email}<span className="sr-only">(current)</span></NavLink>
+                             <NavLink className="nav-link my-link" to="/sign-out">Sign-out<span className="sr-only">(current)</span></NavLink>
                         </li>
                         </React.Fragment>
                         )}
