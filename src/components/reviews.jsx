@@ -1,5 +1,5 @@
-import React, { Component, useEffect } from 'react'; 
-import Review from './common/review';  
+import React, { Component } from 'react'; 
+import CardReview from './common/card-review' ;
 import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService.js';
@@ -105,19 +105,19 @@ class Reviews extends Component {
                     </div>
                 </div>
 
-                <div className="row mt-5">
-                    <div className="col-12-md d-flex  flex-wrap">
+                <div className="row mt-5 ">
+                    <div className="col-md-12 d-flex flex-wrap d-flex justify-content-around ">
                         {reviews.length>0&&reviews.map((item,index)=>(
                             
-                            <Review key={index} 
+                            <CardReview key={index} 
                                     _id={item._id} 
                                     author={item.author} 
                                     date={item.createdAt} 
                                     title={item.title} 
                                     img={item.img}  
                                     body={item.body} 
-                                    comments={item.comments} 
-                                    origin="review"/>
+                                    origin="review"
+                                    />
                             
                         ))}
 

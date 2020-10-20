@@ -4,6 +4,7 @@ import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService';
 import { toast } from 'react-toastify';
+import CardReview from './common/card-review';
 
 class Favorites extends Component {
     state = { 
@@ -33,7 +34,7 @@ class Favorites extends Component {
                     <div className="col-md-12">
 
                        {favorites.length>0 && favorites.map((fav,index)=>(
-                        <Review key={index} _id={fav._id} author={fav.author} date={fav.createdAt} title={fav.title} img={fav.img}  body={fav.body} comments={fav.comments} origin="favorites"/>
+                        <Card-Review key={index} _id={fav._id} author={fav.author} date={fav.createdAt} title={fav.title} img={fav.img}  body={fav.body} comments={fav.comments} origin="favorites"/>
                        ))} 
                         
                     </div>
