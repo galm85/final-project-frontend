@@ -1,4 +1,3 @@
  add protected route
   manager account - only one
-  add to favorite
-  edit review
+create full page review and review cards

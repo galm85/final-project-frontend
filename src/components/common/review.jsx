@@ -51,7 +51,7 @@ this.setState({data});
 }
   
   render() { 
-   const  {_id,author,date,title,img,body,comments,origin} = this.props;
+   const  {_id,author,date,title,img,body,origin} = this.props;
    
    const user = userService.getUser();
     return ( 
@@ -70,75 +70,32 @@ this.setState({data});
                 </div>
 
                 <div className="col-md-1 review-btn">
+                {user && (
+                    <Link to={`/full-review/${_id}`} origin="reviews" className="btn btn-success " ><i className="fas fa-expand"></i></Link>
+                  )}
 
                   {user && origin==="review" && (
                     
-                        <button className="btn btn-primary" onClick={()=>this.addToFavorites(user._id,this.state.data)}>
+                        <button className="btn btn-primary mt-3" onClick={()=>this.addToFavorites(user._id,this.state.data)}>
                             <i className="far fa-star"></i>
-                        </button>
+                        </button>    
                   )}
 
                   {user && origin==="favorites" && (
                     
-                    <button onClick={()=>this.removeFromFavorite(user._id,_id)} className="btn btn-danger">
+                    <button onClick={()=>this.removeFromFavorite(user._id,_id)} className="btn btn-danger mt-3">
                         <i className="fas fa-trash-alt"></i>
                     </button>
               )}
                   
-                    {user.editor && origin==="review" &&
+                    {user&&user.editor && origin==="review" &&
                   <button onClick={()=>this.removeReview(_id)} className="btn btn-danger  mt-3 ">
                       <i className="fas fa-trash-alt"></i>
                   </button>
                   }
                 </div>
 
-            </div>
-
-              <hr className="mt-5"/>
-
-              <div className="row">
-                    <h6>Comments</h6>
-              </div>
-
-              {comments && comments.map((comment, index) =>(
-                <div key={index} className="row">
-                  <div className="col-12 d-flex flex-row mt-2">
-                    <React.Fragment>
-                      <details  className="mt-2">
-                      <summary>{comment.title}</summary>
-                        {comment.body}
-                      </details>
-                      
-                      {user&&user.editor&&origin === "review" &&(
-                        <button onClick={ ()=> this.removeComment(_id,comment)}  className="btn btn-danger ml-auto">
-                          <i className="fas fa-trash-alt"></i>
-                        </button>
-                        )}
-                      
-                     </React.Fragment>
-                  </div>
-                </div>
-                
-                 ))}
-       
-            <hr/>
-
-            <div className="row text-center mb-3">
-              <div className="col-md-12">
-                 
-                  {user&&origin==="review"&&
-                      <Link to={`/new-comment/${_id}`} className="btn btn-primary">Add new comment</Link>
-                  }
-                 
-                  {!user&&origin==="review"&&
-                      <Link to={`register`} className="btn btn-primary">Add new comment</Link>
-                  }
-              </div>
-          </div>
-              
-              
-
-
+            </div>    
     </div>  
      );
   }

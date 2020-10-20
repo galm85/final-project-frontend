@@ -1,0 +1,21 @@
+.my-full-review{
+    font-family: Montserrat;
+
+}
+.my-full-review h1{
+   font-size: 4rem;
+   
+
+}
+.my-full-review p{
+    font-size: 1.5rem;
+    
+    color: black;
+ }
+
+ .my-full-review img{
+    width: 100vw;
+    max-height: 50vh;
+    object-fit: cover;
+    
+ }

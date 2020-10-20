@@ -1,7 +1,7 @@
 .my-review{
     border-bottom:blue solid 2px;
     height: auto;
-    min-height: 500px;
+    min-height: 400px;
     margin-top: 30px;
 }
 
@@ -21,6 +21,10 @@
 .my-review p{
     font-size: 1.2rem;
     color:black;
+    max-height: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .review-btn .btn{

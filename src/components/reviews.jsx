@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'; 
+import React, { Component } from 'react'; 
 import Review from './common/review';  
 import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js';
@@ -92,7 +92,6 @@ class Reviews extends Component {
                 <div className="row mt-5 text-center">
                     <div className="col-md-12">
 
-                  
                     {!user && 
                         <Link disabled className="btn btn-lg btn-outline-primary" to='sign-in'>Add New Review</Link>
                     }
