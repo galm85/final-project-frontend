@@ -4,6 +4,8 @@ import Form from "../common/form";
 import PageHeader from "./pageHeader";
 import { toast } from "react-toastify";
 import reviewsService from "../../services/reviewsService";
+import userService from "../../services/userService";
+import {Redirect} from "react-router-dom";
 
 /**
  * In this component: only "editor user" can get and update the review (title,body,img)
@@ -38,7 +40,7 @@ class EditReview extends Form {
 
    async doSubmit(){
     const data = {...this.state.data};
-    console.log(data);
+    
     if(data.img===""){
         data.img="https://semantic-ui.com/images/wireframe/image.png";
     }
@@ -59,7 +61,11 @@ class EditReview extends Form {
 
 
     render() { 
-        console.log(this.state.data)
+        const user = userService.getUser();
+        if(!user || !user.editor){
+            return <Redirect to="/sign-in" />
+        }
+        
         return ( 
             <div className="container">
                  <PageHeader title="edit Review"/>

@@ -79,9 +79,9 @@ this.setState({data});
      {/* in this div the options are change according to the user account (free/editor) and the rote he came from */}
                 <div className="col-md-1 review-btn">
 
-                {user && (
+                
                     <Link to={`/full-review/${_id}`} origin="reviews" className="btn btn-success " ><i className="fas fa-expand"></i></Link>
-                  )}
+                  
 
                   {user && origin==="review" && (
                         <button className="btn btn-primary mt-3" onClick={()=>this.addToFavorites(user._id,this.state.data)}>

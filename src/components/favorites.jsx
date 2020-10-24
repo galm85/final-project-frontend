@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Review from './common/review';
 import PageHeader from './common/pageHeader';
 import userService from '../services/userService';
+import { Redirect } from "react-router-dom";
 
 
 /**
@@ -27,7 +28,10 @@ class Favorites extends Component {
     render() { 
         const user = userService.getUser();
         let {favorites} = this.state;        
-        console.log(favorites)
+        
+        if(!user){
+            return <Redirect to="/sign-in" />
+        }
         return ( 
             <div className="container">
                 <PageHeader title={`${user.firstName}'s Favorites`} text="These are all your favorites reviews"/>

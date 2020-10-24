@@ -3,7 +3,7 @@ import reviewsService from '../../services/reviewsService.js';
 import userService from '../../services/userService.js';
 import '../../styles/fullReview.css';
 import {toast} from 'react-toastify';
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 
 /**
  * This component shows full review of a selected review from the reviews page;
@@ -51,8 +51,11 @@ class FullReview extends Component {
 
     render() { 
         const review = this.state.review;
-        const user = this.state.user;
-        console.log(this.props);
+        const user = userService.getUser();
+        
+        if(!user){
+            return <Redirect to="/sign-in" />
+        }
         
         if(review){
         return ( 
@@ -156,8 +159,8 @@ class FullReview extends Component {
          )};
        
              return(
-                 <div>Loading</div>
-             )
+                    <p><i>Loading</i></p>
+                    )
         
 
          

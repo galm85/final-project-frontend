@@ -21,6 +21,8 @@ import EditUser from "./components/editUser";
 import Favorites from "./components/favorites";
 import FullReview from "./components/common/fullReview";
 import EditReview from "./components/common/edit-review";
+import ProtectedRouteUser from "./components/common/protectedRouteUser";
+import ProtectedRouteEditor from "./components/common/protectedRouteEditor";
 
 
 class App extends Component {
@@ -49,15 +51,15 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/register" component={Register} />
-          <Route path="/edit-user" component={EditUser} />
+          <ProtectedRouteUser path="/edit-user" component={EditUser} />
           <Route path="/reviews/edit-review/:id" component={EditReview}/>
           <Route path="/reviews" component={Reviews} />
           <Route path="/sign-in" component={Signin} />
           <Route path="/sign-out" component={Signout} />
-          <Route path="/new-review" component={NewReview} />
-          <Route path="/new-comment/:id" component={NewComment} />
+          <ProtectedRouteEditor path="/new-review" editor={true} component={NewReview} />
+          <ProtectedRouteUser path="/new-comment/:id" component={NewComment} />
           <Route path="/favorites/:userId" component={Favorites}/>
-          <Route path="/full-review/:id" component={FullReview}/>
+          <Route path="/full-review/:id"  component={FullReview}/>
         </Switch>
       </main>
 
