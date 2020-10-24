@@ -5,7 +5,6 @@ import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService.js';
 import {toast} from 'react-toastify';
-import {Link} from 'react-router-dom';
 
 
 /**

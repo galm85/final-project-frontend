@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Home from "./components/home";
+import About from './components/about';
 import Register from "./components/register";
 import userService from './services/userService.js';
 import Signin from "./components/sign-in";
@@ -22,7 +23,6 @@ import Favorites from "./components/favorites";
 import FullReview from "./components/common/fullReview";
 import EditReview from "./components/common/edit-review";
 import ProtectedRouteUser from "./components/common/protectedRouteUser";
-import ProtectedRouteEditor from "./components/common/protectedRouteEditor";
 
 
 class App extends Component {
@@ -50,6 +50,7 @@ class App extends Component {
       <main className="flex-fill">
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
           <Route path="/register" component={Register} />
           <ProtectedRouteUser path="/edit-user" component={EditUser} />
           <Route path="/reviews/edit-review/:id" component={EditReview}/>
