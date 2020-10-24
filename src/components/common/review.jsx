@@ -39,8 +39,8 @@ this.setState({data});
   addToFavorites = async (userId,review)=>{
     
     try{
-      await userService.addToFavorite(userId,review);
-      toast(`${review.title} added to your favorites` );
+      const response = await userService.addToFavorite(userId,review);
+      toast(response.data );
     }catch(error){
       console.log(error);
     }

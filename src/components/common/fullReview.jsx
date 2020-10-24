@@ -29,18 +29,21 @@ class FullReview extends Component {
     addToFavorites = async (userId,review)=>{
     
         try{
-          await userService.addToFavorite(userId,review);
-          toast(`${review.title} added to your favorites` );
+          const respones = await userService.addToFavorite(userId,review);
+          console.log(respones);
+          toast(respones.data);
         }catch(error){
           console.log(error);
         }
       }
+
 
       removeReview= async(_id)=>{
         await reviewsService.removeReview(_id)
         window.location = '/reviews';
       }
     
+
       removeComment =async (reviewId,comment)=>{
       await  reviewsService.removeComment(reviewId,comment);
       toast("Comment deleted");

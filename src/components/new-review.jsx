@@ -5,7 +5,7 @@ import Joi from 'joi-browser';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService';
 import {toast} from 'react-toastify';
-
+import{Redirect} from 'react-router-dom';
 
 /**
  * this component is only visible to an "editor-user" from the reviews component.
@@ -63,6 +63,11 @@ class NewReview extends Form {
 
 
     render() { 
+        const user = userService.getUser()
+        if(!user|| !user.editor){
+           return <Redirect to="/sign-in" />
+        }
+
         return ( 
             <div className="container">
                  <PageHeader title="New Review" text="Please insert a new review"/>
