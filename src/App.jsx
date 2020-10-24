@@ -57,7 +57,7 @@ class App extends Component {
           <Route path="/sign-in" component={Signin} />
           <Route path="/sign-out" component={Signout} />
           <ProtectedRouteEditor path="/new-review" editor={true} component={NewReview} />
-          <ProtectedRouteUser path="/new-comment/:id" component={NewComment} />
+          <Route path="/new-comment/:id" component={NewComment} />
           <Route path="/favorites/:userId" component={Favorites}/>
           <Route path="/full-review/:id"  component={FullReview}/>
         </Switch>

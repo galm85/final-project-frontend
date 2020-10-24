@@ -1,4 +1,0 @@
- add protected route
- manager account - only one
- edit review by manager
-return buttons

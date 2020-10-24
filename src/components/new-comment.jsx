@@ -5,6 +5,7 @@ import PageHeader from './common/pageHeader';
 import reviewsService from '../services/reviewsService.js';
 import userService from '../services/userService.js';
 import {toast} from 'react-toastify';
+import {Link} from 'react-router-dom';
 
 
 /**
@@ -36,7 +37,7 @@ class NewComment extends Form {
     try{
      await reviewsService.postNewComment(id,data);
      toast("Thank tou for your comment");
-     this.props.history.replace('/reviews');
+     this.props.history.replace(`/full-review/${id}`);
     }
     catch(err){
       console.log(err);
@@ -60,6 +61,7 @@ class NewComment extends Form {
               {this.renderInput("title", "Title")}
               {this.renderTextArea("body", "Type your comment","10")}
               {this.renderButton("Post")}
+              <botton className="btn btn-outline-danger ml-5" onClick={this.props.history.goBack} >Cancel</botton>
             </form>
           </div>
       </div>

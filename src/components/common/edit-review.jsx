@@ -77,7 +77,8 @@ class EditReview extends Form {
                             {this.renderInput('img',"Image(url)")}
                             {this.renderTextArea('body',"Review","10")}
                             {this.renderButton('Post')}
-                            
+                            <botton className="btn btn-outline-danger ml-5" onClick={this.props.history.goBack} >Cancel</botton>
+
                         </form>
                     </div>
                 </div>

@@ -44,9 +44,10 @@ class FullReview extends Component {
       removeComment =async (reviewId,comment)=>{
       await  reviewsService.removeComment(reviewId,comment);
       toast("Comment deleted");
-       window.location='/reviews';
     
-  }
+      window.location =`/full-review/${reviewId}`;
+
+      }
 
 
     render() { 
@@ -127,15 +128,18 @@ class FullReview extends Component {
                     
                       <React.Fragment>
                         <details className="d-flex flex-column mt-2" key={index} >
-                        <summary>{comment.title}</summary>
-                          {comment.body}
-                        </details>
-                        
+                        <summary className="col-md-12">{comment.title}
                         {user&&user.editor&&(
-                          <button onClick={ ()=> this.removeComment(comment._id,comment)}  className="btn btn-danger ml-auto">
+                          <button  onClick={ ()=> this.removeComment(review._id,comment)}  className="btn btn-danger ml-5">
                             <i className="fas fa-trash-alt"></i>
                           </button>
                           )}
+                        </summary>
+                          {comment.body}
+                          
+                        </details>
+                        
+                        
                         
                        </React.Fragment>
                        ))}
