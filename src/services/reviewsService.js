@@ -1,6 +1,5 @@
 import httpService from './httpService'
 import {apiUrl} from '../config.json'
-//"apiUrl":"http://localhost:4000/"
 
 
 

@@ -1,4 +1,4 @@
-Review Games
+Games Reviews
 
 this app is about video games reviews.
 it is allows to the user (according to the their registration) to read,write,edit,delete reviews and comments
@@ -17,7 +17,7 @@ there are 3 different accounts in this app
    he can read review,add to favorite,post a new review, edit/delete a review,
    read/post/delete comments of a review.
 
-ACCOUNTS
+**_ ACCOUNTS _**
 
 editor accounts
 
@@ -36,7 +36,7 @@ sign-in user (free account)
 
 ---
 
-Database
+**_ DATABASE _**
 
 the database name is : VideoGamesReview
 
@@ -44,6 +44,6 @@ collection:
 
 1. users - all the users that sign-in to the app;
    each user contain his personal details and his favorites reviews.
-   2)reviews - all the reviews that the users posted.
+2. reviews - all the reviews that the users posted.
    each review contain title,body,image (url),date,the author who post the review and a array of comments.
    only editor account can post new review.
