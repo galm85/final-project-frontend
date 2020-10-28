@@ -31,8 +31,8 @@ class App extends Component {
     user:{}
     }
 
- async componentDidMount(){
-    const user = await userService.getUser()
+  componentDidMount(){
+    const user = userService.getUser()
     this.setState({user}); 
        
 
