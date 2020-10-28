@@ -29,17 +29,18 @@ const Home = () => {
                         <i style={{color:"red"}} className="fas fa-desktop mx-3"></i></p>
                 </div> 
              </div>
-
+            {!user && (
              <div className="row text center mt-3">
                 <div className="col-md-10 main-title mx-auto shadow text-center">
                     <p>please
                     <Link to="sign-in" > sign in </Link>
                     or
-                    <Link to="sign-in" > Register </Link>
+                    <Link to="register" > Register </Link>
                     </p>
-                </div>       
+                </div> 
+                  
             </div>
-       
+         )}  
        
        
        
