@@ -47,3 +47,4 @@ collection:
 2. reviews - all the reviews that the users posted.
    each review contain title,body,image (url),date,the author who post the review and a array of comments.
    only editor account can post new review.
+//"apiUrl":"http://localhost:4000/"
