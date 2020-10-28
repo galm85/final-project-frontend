@@ -14,7 +14,7 @@ const Home = () => {
                 <div className="col-md-10 main-title mx-auto shadow text-center">
                     <h1 className="display-1 text-center my-title">GAMES REVIEWS</h1>
                     {user &&
-                    <p>Welcome {user.firstName} {user.lastName}</p>
+                    <p>Welcome user {user.firstName} {user.lastName}</p>
                     }
                     
                 </div>
