@@ -25,7 +25,7 @@ class Signin extends Form  {
         try{
          await userService.signIn(data)
           toast(`Welcome back ${this.state.email}`)  
-             window.location = "gal-games-reviews.netlify.app/reviews"; 
+             window.location = "/reviews";  
         }
         catch(error){
             if(error.response&&error.response.data){
