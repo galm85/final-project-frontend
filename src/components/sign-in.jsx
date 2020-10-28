@@ -4,6 +4,8 @@ import PageHeader from './common/pageHeader';
 import Joi from 'joi-browser';
 import userService from '../services/userService';
 import {toast} from 'react-toastify';
+import { Redirect } from "react-router-dom";
+
 
 class Signin extends Form  {
     state = { 
@@ -25,7 +27,8 @@ class Signin extends Form  {
         try{
          await userService.signIn(data)
           toast(`Welcome back ${this.state.email}`)  
-             window.location = "https://gal-games-reviews.netlify.app/reviews";  
+            return <Redirect  to="/reviews"/> 
+             
         }
         catch(error){
             if(error.response&&error.response.data){
