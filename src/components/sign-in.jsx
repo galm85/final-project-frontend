@@ -25,7 +25,8 @@ class Signin extends Form  {
         try{
          await userService.signIn(data)
           toast(`Welcome back ${this.state.email}`)  
-             window.location = "/reviews";  
+             //window.location = "/reviews"; 
+             this.props.history.replace("/reviews"); 
         }
         catch(error){
             if(error.response&&error.response.data){
